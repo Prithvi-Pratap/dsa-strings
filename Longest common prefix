@@ -1,0 +1,62 @@
+# 14. Longest Common Prefix
+
+🔗 [LeetCode Link](https://leetcode.com/problems/longest-common-prefix/)
+
+## Problem Statement
+Write a function to find the longest common prefix string amongst an array of strings.
+
+If there is no common prefix, return an empty string `""`.
+
+### Examples
+**Example 1**  
+Input: `["flower","flow","flight"]`  
+Output: `"fl"`
+
+**Example 2**  
+Input: `["dog","racecar","car"]`  
+Output: `""`  
+Explanation: There is no common prefix among the input strings.
+
+### Constraints
+- `1 <= strs.length <= 200`
+- `0 <= strs[i].length <= 200`
+- `strs[i]` consists of only lowercase English letters.
+---
+
+## ✅ Approach
+
+- Initialize the prefix as the first string.
+- Iterate through the rest of the strings.
+- Keep trimming the prefix from the end until the current string starts with it.
+- If the prefix becomes empty, return `""`.
+
+---
+
+## 🧠 Code (C++)
+
+```cpp
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        if (strs.size() == 0)
+            return "";
+        string prefix = strs[0];
+        for (int i = 1; i < strs.size(); i++) {
+            while (strs[i].find(prefix) != 0) {
+                prefix = prefix.substr(0, prefix.length() - 1);
+            }
+        }
+        return prefix;
+    }
+};
+
+## ⏱ Time and Space Complexity
+
+- **Time Complexity:** `O(N * M)`  
+  Where:  
+  - `N` is the number of strings  
+  - `M` is the average length of the strings  
+  - In the worst case, each string comparison could check all characters of the prefix
+
+- **Space Complexity:** `O(1)`  
+  - We are not using any extra data structures, only a few variables.
