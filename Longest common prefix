@@ -7,7 +7,10 @@ Write a function to find the longest common prefix string amongst an array of st
 
 If there is no common prefix, return an empty string `""`.
 
-### Examples
+---
+
+## Examples
+
 **Example 1**  
 Input: `["flower","flow","flight"]`  
 Output: `"fl"`
@@ -17,18 +20,21 @@ Input: `["dog","racecar","car"]`
 Output: `""`  
 Explanation: There is no common prefix among the input strings.
 
-### Constraints
+---
+
+## Constraints
+
 - `1 <= strs.length <= 200`
 - `0 <= strs[i].length <= 200`
 - `strs[i]` consists of only lowercase English letters.
+
 ---
 
 ## ✅ Approach
 
-- Initialize the prefix as the first string.
-- Iterate through the rest of the strings.
-- Keep trimming the prefix from the end until the current string starts with it.
-- If the prefix becomes empty, return `""`.
+- Initialize the prefix as the first string in the list.
+- Loop through each string and reduce the prefix until the current string starts with it.
+- If at any point the prefix becomes empty, return `""`.
 
 ---
 
@@ -49,14 +55,3 @@ public:
         return prefix;
     }
 };
-
-## ⏱ Time and Space Complexity
-
-- **Time Complexity:** `O(N * M)`  
-  Where:  
-  - `N` is the number of strings  
-  - `M` is the average length of the strings  
-  - In the worst case, each string comparison could check all characters of the prefix
-
-- **Space Complexity:** `O(1)`  
-  - We are not using any extra data structures, only a few variables.
